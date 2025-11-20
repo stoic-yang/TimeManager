@@ -21,6 +21,7 @@ public:
     void add(std::string date, std::string name, std::string startTime, std::string endTime);
     void deleteEvent(int id);
     void draw(std::string date);
+    void generateReport(std::string date);
     void printLog();
     void printGlobal();
     

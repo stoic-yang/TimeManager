@@ -69,3 +69,7 @@ void Day::load(ifstream& in) {
     
     eventList.load(in);
 }
+
+const LinkList<Event>& Day::getEventList() const {
+    return eventList;
+}

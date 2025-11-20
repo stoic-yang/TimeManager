@@ -5,6 +5,7 @@
 #include "Stage.h"
 #include "LinkList.h"
 #include "Utils.h"
+#include "ReportGenerator.h"
 
 bool isCounting = false;
 Stage* stage = nullptr;
@@ -18,23 +19,23 @@ int main() {
     while (true) {
         std::string op;
         std::cin >> op;
-        if (op == "-1") {
+        if (op == "exit") {
             stage->saveToFile(".TimeManager");
             std::cout << "程序终止" << std::endl;
             break;
         }
         // help 指令
-        else if (op == "h") {
+        else if (op == "help") {
             help();
         }
         // start 指令
-        else if (op == "s") {
+        else if (op == "start") {
             std::cout << "请输入任务名称:" << std::endl;
             std::string name;
             std::cin >> name;
             stage->start(name);
         }
-        else if (op == "e") {
+        else if (op == "end") {
             stage->end();
         }
         else if (op == "log") {
@@ -57,6 +58,14 @@ int main() {
             std::string date;
             std::cin >> date;
             stage->draw(date);
+        }
+        else if (op == "report") {
+            std::string date;
+            std::cin >> date;
+            stage->generateReport(date);
+        }
+        else {
+            std::cout << "请输入合法的指令： " << std::endl;
         }
     }
 }

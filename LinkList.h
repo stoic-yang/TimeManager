@@ -4,13 +4,14 @@
 
 template <typename T>
 class LinkList {
-private:
+public:
     struct Node {
         T data;
         Node* next;
         Node(T val) : data(val), next(nullptr) {}
     };
     
+private:
     Node* head;
     Node* cur;
 

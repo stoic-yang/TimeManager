@@ -1,4 +1,5 @@
 #include "Stage.h"
+#include "ReportGenerator.h"
 #include <iostream>
 #include <ctime>
 #include <iomanip>
@@ -149,6 +150,26 @@ void Stage::draw(string date) {
     }
 
     targetDay->draw();
+}
+
+void Stage::generateReport(string date) {
+    Day* targetDay = nullptr;
+    auto head = dayList.getHead();
+    while (head != nullptr) {
+        if (head->data.getDate() == date) {
+            targetDay = &(head->data);
+            break;
+        }
+        head = head->next;
+    }
+
+    if (targetDay == nullptr) {
+        cout << "未找到日期为 " << date << " 的记录，无法生成报表" << endl;
+        return;
+    }
+
+    string filename = "report_" + date + ".svg";
+    TimeReport::generateDailyReport(*targetDay, filename);
 }
 
 void Stage::printLog() {

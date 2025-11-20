@@ -22,4 +22,6 @@ public:
     
     void save(std::ofstream& out) const;
     void load(std::ifstream& in);
+
+    const LinkList<Event>& getEventList() const;
 };
