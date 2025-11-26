@@ -30,7 +30,6 @@ int main() {
         }
         // start 指令
         else if (op == "start") {
-            std::cout << "请输入任务名称:" << std::endl;
             std::string name;
             std::cin >> name;
             stage->start(name);
@@ -53,6 +52,12 @@ int main() {
             int id;
             std::cin >> id;
             stage->deleteEvent(id);
+        }
+        else if (op == "update") {
+            int id;
+            std::string date, name, start, end;
+            std::cin >> id >> date >> name >> start >> end;
+            stage->updateEvent(id, date, name, start, end);
         }
         else if (op == "draw") {
             std::string date;

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+<rect width="100%" height="100%" fill="#F8F9FA" />
+<text x="40" y="50" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="24" fill="#1E293B" font-weight="bold">TimeManager Daily Report</text>
+<text x="40" y="80" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="14" fill="#64748B" font-weight="normal">2025-11-26</text>
+<circle cx="200" cy="250" r="80" fill="none" stroke="#E2E8F0" stroke-width="15" stroke-dasharray="1000 1000" stroke-dashoffset="0" transform="rotate(-90 200 250)" />
+<circle cx="200" cy="250" r="80" fill="none" stroke="#94A3B8" stroke-width="15" stroke-dasharray="0 1000" stroke-dashoffset="-0" transform="rotate(-90 200 250)" />
+<circle cx="200" cy="250" r="80" fill="none" stroke="#d43307ff" stroke-width="15" stroke-dasharray="502.655 1000" stroke-dashoffset="-0" transform="rotate(-90 200 250)" />
+<text x="155" y="255" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="20" fill="#0F172A" font-weight="bold">1m</text>
+<text x="180" y="275" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#94A3B8" font-weight="normal">总计</text>
+<rect x="120" y="390" width="12" height="12" fill="#94A3B8" rx="2" />
+<text x="140" y="400" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#475569" font-weight="normal">其他: 0m</text>
+<rect x="120" y="415" width="12" height="12" fill="#d43307ff" rx="2" />
+<text x="140" y="425" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#475569" font-weight="normal">学习: 1m</text>
+<text x="400" y="120" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="14" fill="#475569" font-weight="bold">详细时间轴</text>
+<rect x="414" y="150" width="2" height="400" fill="#E2E8F0" rx="0" />
+<circle cx="415" cy="175" r="6" fill="none" stroke="#d43307ff" stroke-width="4" stroke-dasharray="1000 1000" stroke-dashoffset="0" transform="rotate(-90 415 175)" />
+<rect x="440" y="150" width="320" height="60" fill="white" rx="8" />
+<rect x="440" y="150" width="4" height="60" fill="#d43307ff" rx="0" />
+<text x="455" y="170" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#94A3B8" font-weight="normal">15:02 - 15:03</text>
+<text x="455" y="190" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="14" fill="#1E293B" font-weight="bold">OOP课程</text>
+<text x="700" y="185" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#d43307ff" font-weight="bold">1m</text>
+<circle cx="415" cy="250" r="6" fill="none" stroke="#94A3B8" stroke-width="4" stroke-dasharray="1000 1000" stroke-dashoffset="0" transform="rotate(-90 415 250)" />
+<rect x="440" y="225" width="320" height="60" fill="white" rx="8" />
+<rect x="440" y="225" width="4" height="60" fill="#94A3B8" rx="0" />
+<text x="455" y="245" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#94A3B8" font-weight="normal">15:35 - 15:35</text>
+<text x="455" y="265" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="14" fill="#1E293B" font-weight="bold">english</text>
+<text x="700" y="260" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#94A3B8" font-weight="bold">0m</text>
+</svg>

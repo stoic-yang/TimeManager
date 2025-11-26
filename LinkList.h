@@ -148,6 +148,19 @@ public:
         return false;
     }
 
+    // 根据ID获取节点数据指针
+    template <typename K>
+    T* getById(K id) {
+        Node* p = head;
+        while (p != nullptr) {
+            if (p->data.getId() == id) {
+                return &(p->data);
+            }
+            p = p->next;
+        }
+        return nullptr;
+    }
+
     void print() const {
         Node* p = head;
         while (p != nullptr) {
@@ -183,7 +196,7 @@ public:
         for (int i = 0; i < count; ++i) {
             T val; 
             val.load(in);
-            add(val); 
+            insertSorted(val); 
         }
     }
 

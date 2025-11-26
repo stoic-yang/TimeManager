@@ -21,6 +21,9 @@ public:
     std::string getName() const;
     std::chrono::minutes getStartTime() const;
     std::chrono::minutes getEndTime() const;
+    void setName(std::string name);
+    void setStartTime(std::string startTimeStr);
+    void setEndTime(std::string endTimeStr);
     void print() const;
     std::string formatTime(std::chrono::minutes time) const;
     bool operator<(const Event& other) const;

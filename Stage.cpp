@@ -96,7 +96,7 @@ void Stage::add(string date, string name, string startTime, string endTime) {
 
     if (targetDay == nullptr) {
         Day newDay(date);
-        dayList.add(newDay);
+        dayList.insertSorted(newDay);
         
         head = dayList.getHead();
         while (head != nullptr) {
@@ -113,13 +113,79 @@ void Stage::add(string date, string name, string startTime, string endTime) {
     cout << "成功添加事件: " << name << " 到 " << date << endl;
 }
 
-void Stage::deleteEvent(int id) {
-    if (currentDay != nullptr) {
-        if (currentDay->removeEventById(id)) {
-            cout << "成功删除 ID 为 " << id << " 的事件" << endl;
-        } else {
-            cout << "未找到 ID 为 " << id << " 的事件" << endl;
+void Stage::updateEvent(int id, string newDate, string name, string startTime, string endTime) {
+    // 1. 查找源日期和事件
+    Day* sourceDay = nullptr;
+    Event* targetEvent = nullptr;
+    
+    auto node = dayList.getHead();
+    while (node != nullptr) {
+        targetEvent = node->data.getEventById(id);
+        if (targetEvent != nullptr) {
+            sourceDay = &(node->data);
+            break;
         }
+        node = node->next;
+    }
+
+    if (sourceDay == nullptr || targetEvent == nullptr) {
+        cout << "未找到 ID 为 " << id << " 的事件" << endl;
+        return;
+    }
+
+    Event eventCopy = *targetEvent; 
+    eventCopy.setName(name);
+    eventCopy.setStartTime(startTime);
+    eventCopy.setEndTime(endTime);
+
+    if (sourceDay->getDate() == newDate) {
+        sourceDay->updateEvent(id, name, startTime, endTime);
+        cout << "成功修改 ID 为 " << id << " 的事件" << endl;
+    } else {
+        sourceDay->removeEventById(id);
+
+        Day* targetDay = nullptr;
+        node = dayList.getHead();
+        while (node != nullptr) {
+            if (node->data.getDate() == newDate) {
+                targetDay = &(node->data);
+                break;
+            }
+            node = node->next;
+        }
+
+        if (targetDay == nullptr) {
+            Day newDay(newDate);
+            dayList.insertSorted(newDay);
+            node = dayList.getHead();
+            while (node != nullptr) {
+                if (node->data.getDate() == newDate) {
+                    targetDay = &(node->data);
+                    break;
+                }
+                node = node->next;
+            }
+        }
+
+        targetDay->addEvent(eventCopy);
+        cout << "成功移动并修改事件: ID " << id << " 已移动到 " << newDate << endl;
+    }
+}
+
+void Stage::deleteEvent(int id) {
+    auto node = dayList.getHead();
+    bool found = false;
+    while (node != nullptr) {
+        if (node->data.removeEventById(id)) {
+            cout << "成功删除 ID 为 " << id << " 的事件 (日期: " << node->data.getDate() << ")" << endl;
+            found = true;
+            break;
+        }
+        node = node->next;
+    }
+
+    if (!found) {
+        cout << "未找到 ID 为 " << id << " 的事件" << endl;
     }
 }
 
@@ -136,8 +202,7 @@ void Stage::draw(string date) {
 
     if (targetDay == nullptr) {
         Day newDay(date);
-        dayList.add(newDay);
-        // 重新查找获取指针
+        dayList.insertSorted(newDay);
         head = dayList.getHead();
         while (head != nullptr) {
             if (head->data.getDate() == date) {
@@ -179,7 +244,13 @@ void Stage::printLog() {
 }
 
 void Stage::printGlobal() {
-    dayList.print();
+    auto node = dayList.getHead();
+    while (node != nullptr) {
+        if (!node->data.isEmpty()) {
+            node->data.print();
+        }
+        node = node->next;
+    }
 }
 
 void Stage::saveToFile(string filename) {
@@ -209,8 +280,7 @@ void Stage::loadFromFile(string filename) {
     
     if (currentDay == nullptr) {
         Day newDay(todayDate);
-        dayList.add(newDay);
-        // 重新获取
+        dayList.insertSorted(newDay);
         head = dayList.getHead();
         while (head != nullptr) {
             if (head->data.getDate() == todayDate) {

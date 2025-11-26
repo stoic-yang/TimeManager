@@ -91,3 +91,15 @@ void Event::load(ifstream& in) {
 int Event::getDuration() const {
     return (endTime - startTime).count();
 }
+
+void Event::setName(string name) {
+    this->name = name;
+}
+
+void Event::setStartTime(string startTimeStr) {
+    this->startTime = parseTime(startTimeStr);
+}
+
+void Event::setEndTime(string endTimeStr) {
+    this->endTime = parseTime(endTimeStr);
+}

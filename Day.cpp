@@ -23,13 +23,40 @@ void Day::addEvent(Event e) {
     eventList.insertSorted(e);
 }
 
+Event* Day::getEventById(int id) {
+    return eventList.getById(id);
+}
+
+bool Day::updateEvent(int id, string newName, string newStart, string newEnd) {
+    Event* e = eventList.getById(id);
+    if (e == nullptr) return false;
+
+    Event copy = *e;
+    eventList.removeById(id);
+    
+    copy.setName(newName);
+    copy.setStartTime(newStart);
+    copy.setEndTime(newEnd);
+    
+    eventList.insertSorted(copy);
+    return true;
+}
+
 bool Day::removeEventById(int id) {
     return eventList.removeById(id);
+}
+
+bool Day::isEmpty() const {
+    return eventList.getHead() == nullptr;
 }
 
 void Day::print() const {
     cout << "Date: " << data << endl;
     eventList.print();
+}
+
+bool Day::operator<(const Day& other) const {
+    return data < other.data;
 }
 
 void Day::draw() const {

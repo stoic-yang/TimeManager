@@ -19,6 +19,7 @@ public:
     void start(std::string name);
     void end();
     void add(std::string date, std::string name, std::string startTime, std::string endTime);
+    void updateEvent(int id, std::string newDate, std::string name, std::string startTime, std::string endTime);
     void deleteEvent(int id);
     void draw(std::string date);
     void generateReport(std::string date);
